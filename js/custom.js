@@ -49,7 +49,7 @@
         scrollTime: 600, // animation duration
         activeClass: 'active', // class for active nav item
         onPageChange: null,
-        topOffset: -100 // offset for fixed header
+        topOffset: -80 // offset for fixed header
     });
     
     /*----------------------------------------------------
@@ -65,7 +65,7 @@
         var targetSection = $('[data-scroll-index="' + target + '"]');
         if (targetSection.length) {
             $('html, body').animate({
-                scrollTop: targetSection.offset().top - 100
+                scrollTop: targetSection.offset().top - 80
             }, 600);
         }
         // Close mobile menu for onepage
@@ -116,10 +116,30 @@
     });
     
     /*----------------------------------------------------
-      5. Close navbar-collapse when a  clicked 
+      5. Navbar Mobile Slide-In & Backdrop
     ----------------------------------------------------*/
-    $(document).on('click', '.navbar-nav .dropdown-item a', function () {
-        $(".navbar-collapse").removeClass("show");
+    // Create backdrop if it doesn't exist
+    if ($('.navbar-backdrop').length === 0) {
+        $('<div class="navbar-backdrop"></div>').appendTo('body');
+    }
+    
+    // Toggle backdrop on hamburger click
+    $('.navbar-toggler').on('click', function () {
+        $('.navbar-backdrop').toggleClass('show');
+    });
+
+    // Close menu when clicking the backdrop
+    $('.navbar-backdrop').on('click', function () {
+        $(this).removeClass('show');
+        $('.navbar-collapse').removeClass('show');
+        $('.navbar-toggler').addClass('collapsed').attr('aria-expanded', 'false');
+    });
+
+    // Close menu when clicking links
+    $(document).on('click', '.navbar-nav .nav-link, .navbar-nav .dropdown-item a', function () {
+        $('.navbar-collapse').removeClass('show');
+        $('.navbar-backdrop').removeClass('show');
+        $('.navbar-toggler').addClass('collapsed').attr('aria-expanded', 'false');
     });
 
     
