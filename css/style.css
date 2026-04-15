@@ -875,9 +875,6 @@ input[type="checkbox"] {
 .navbar-toggler[aria-expanded="true"] .ti-menu:before {
     content: "\e646"; /* themify ti-close icon */
 }
-        transform: translateY(0);
-    }
-}
 @media screen and (max-width: 991px) {
     .navbar {
         padding-left: 0px;
