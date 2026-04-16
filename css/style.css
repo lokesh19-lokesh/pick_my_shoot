@@ -1035,11 +1035,11 @@ input[type="checkbox"] {
 
     .logo-wrapper {
         float: left;
-        padding: 30px 15px;
+        padding: 10px 2.5px;
     }
 
     .nav-scroll .logo-wrapper {
-        padding: 30px 15px;
+        padding: 15px 5px;
         background-color: transparent;
     }
 
